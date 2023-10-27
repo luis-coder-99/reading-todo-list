@@ -7,4 +7,4 @@ daily_media = {
     5: "Manager Magazin"
 }
 
-task = {"completed": False, "start_time": None, "end_time": None, "total_time": 0.0}
+task = {media_tracking {"completed": False, "start_time": None, "end_time": None, "total_time": 0.0} for service in news_services. values()}
