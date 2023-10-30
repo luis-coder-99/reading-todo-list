@@ -11,7 +11,6 @@ daily_media = {
 task = {service: {"completed": False, "start_time": None, "end_time": None, "total_time": 0.0} for service in daily_media.values()}
 
 def finish_reading(service)
-    if not task[service]["comppleted"]:
+    if not task[service]["completed"]:
     tasks[service]["completed"] = True
     tasks[service]["endtime"] = time.time()
-    
