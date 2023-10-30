@@ -1,4 +1,5 @@
 import time 
+### media i consume daily
 daily_media = {
     1: "FAZ",
     2: "Tagesspiegel",
@@ -8,4 +9,9 @@ daily_media = {
 }
 #### Second Dictionary to save the time and status of the first
 task = {service: {"completed": False, "start_time": None, "end_time": None, "total_time": 0.0} for service in daily_media.values()}
-print(task)
+
+def finish_reading(service)
+    if not task[service]["comppleted"]:
+    tasks[service]["completed"] = True
+    tasks[service]["endtime"] = time.time()
+    
