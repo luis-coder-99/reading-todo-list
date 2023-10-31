@@ -12,5 +12,12 @@ task = {service: {"completed": False, "start_time": None, "end_time": None, "tot
 
 def finish_reading(service)
     if not task[service]["completed"]:
-    tasks[service]["completed"] = True
-    tasks[service]["endtime"] = time.time()
+        tasks[service]["completed"] = True
+        tasks[service]["endtime"] = time.time()
+        if taska[service]["start_time"] is not None
+            time_spend = tasks[service]["end time"] - task[service]["start_time"]
+            task[service]["total_time"] += time_spend
+        task[service]["start_time"] = None
+        print(f"{service} wurde als erledigt markiert.")
+    else:
+        print(f"{service} wurde bereits als erledigt markiert. ")
