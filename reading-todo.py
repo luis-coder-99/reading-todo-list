@@ -21,3 +21,12 @@ def finish_reading(service)
         print(f"{service} wurde als erledigt markiert.")
     else:
         print(f"{service} wurde bereits als erledigt markiert. ")
+
+
+def reset_programm():
+    for service in tasks:
+        task[service]["completed"] = False
+        task[service]["start_time"] = None
+        task[service]["end_time"] = None
+        task[service]["total_time"] = 0.0
+
