@@ -1,5 +1,5 @@
 import time 
-### media i consume daily
+### Media I consume daily
 daily_media = {
     1: "FAZ",
     2: "Tagesspiegel",
@@ -48,3 +48,12 @@ while true:
 
     user_input = input(": ")
 
+    if user_input == "quit":
+        break
+    elif user_input == "list"
+        print("Nachrichtendienste:")
+        for service, info in daily_media.items():
+            status = "Erledigt" if task[info]["completed"] else "Nicht erledigt"
+            total_time = task[info]["total_time"]
+            print(f"{service}: {info} - {status} - Gesamtzeit {total_time: .2f} Sekunden")
+    elif user_input == "average":
