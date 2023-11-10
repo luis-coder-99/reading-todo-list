@@ -1,5 +1,6 @@
-import time 
-### Media I consume daily
+import time
+
+#Media I consume daily
 daily_media = {
     1: "FAZ",
     2: "Tagesspiegel",
@@ -7,53 +8,54 @@ daily_media = {
     4: "Wirtschaftswoche",
     5: "Manager Magazin"
 }
-#### Second Dictionary to save the time and status of the first
-task = {service: {"completed": False, "start_time": None, "end_time": None, "total_time": 0.0} for service in daily_media.values()}
 
+# Second Dictionary to save time and status
+tasks = {service: {"completed": False, "total_time": 0.0} for service in daily_media.values()}
+
+#Functions
 def finish_reading(service, spend_time):
-    if not task[service]["completed"]:
+    if not tasks[service]["completed"]:
         tasks[service]["completed"] = True
-        tasks[service]["endtime"] = time.time()
-        if tasks[service]["start_time"] is not None
-            time_spend = tasks[service]["end time"] - task[service]["start_time"]
-            task[service]["total_time"] += spend_time
-        task[service]["start_time"] = None
-        print(f"{service} wurde als erledigt markiert.")
-
-
+        tasks[service]["total_time"] += spend_time
+        print(f"{service} wurde als erledigt makiert. Verbrachte Zeit: {spend_time:.2f} Sekunden")
 
 def reset_programm():
     for service in tasks:
-        task[service]["completed"] = False
-        task[service]["start_time"] = None
-        task[service]["end_time"] = None
-        task[service]["total_time"] = 0.0
-
+        tasks[service]["completed"] = False
 
 def calculate_average_time():
-    completed_task = [task for task in task.values() if task["completed"]]
+    completed_tasks = [task for task in tasks.values() if task["completed"]]
     if completed_tasks:
-        total_time_completed = sum(task["total_time"] for task in completed_task)
-        return total_time_completed / len(completed_task)
+        total_time_completed = sum(task["total_time"] for task in completed_tasks)
+        return total_time_completed / len(completed_tasks)
     else:
         return 0.0
 
-while true:
-    print("Optionen:")
-    print("Geben Sie 'List' ein, um alle Nachrichtendienste anzuzeigen")
-    print("Geben Sie 'erledigt' ein, um ein Nachrichtendiesnt als erledit zu makieren")
-    print("Geben Sie 'average' ein, um die durchschnittliche Zeit anzuzeigen")
-    print("Geben Sie 'reset' ein, um das Programm zurückzusetzen")
-    print("Geben Sie 'quit' ein, um das Programm zu beenden")
+while True:
+    print("Options:")
+    print("Type 'List' to see all newspapers I daily read")
+    print("Type 'completed' to mark a news service as completed")
+    print("Type 'average' to see the average time")
+    print("Type 'reset' to reset the program")
+    print("Type 'quit' to exit the program")
 
-    user_input = input(": ")
+    user_input = input("Input: ")
 
     if user_input == "quit":
         break
-    elif user_input == "list"
-        print("Nachrichtendienste:")
+    elif user_input == "List":
+        print("List of daily newspapers I read:")
         for service, info in daily_media.items():
-            status = "Erledigt" if task[info]["completed"] else "Nicht erledigt"
-            total_time = task[info]["total_time"]
-            print(f"{service}: {info} - {status} - Gesamtzeit {total_time: .2f} Sekunden")
+            status = "Completed" if tasks[info]["completed"] else "Not completed"
+            total_time = tasks[info]["total_time"]
+            print(f"{service}: {info} - {status} - Total time {total_time:.2f} seconds")
     elif user_input == "average":
+        average_time = calculate_average_time()
+        print(f"Average time for completed tasks: {average_time:.2f} seconds")
+    elif user_input == "completed":
+        service = int(input("Enter the number of the read news magazine: "))
+        if service in daily_media.values() and not tasks[service]["completed"]:
+            spend_time = float(input("Enter the time spent (in seconds): "))
+            finish_reading(service, spend_time)
+
+        
