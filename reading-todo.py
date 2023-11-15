@@ -10,19 +10,19 @@ daily_media = {
 }
 
 # Second Dictionary is there to save the time and the status of the daily media
-tasks = {service: {"completed": False, "total_time": 0.0} for service in daily_media.values()}
+tasks = {service: {"completed": False, "total_time": 0.0} for service in daily_media.keys()}
         
 # Functions to
-def finish_reading(service, spend_time):
-    if not tasks[service]["completed"]:
-        tasks[service]["completed"] = True
-        tasks[service]["total_time"] += spend_time
-        print(f"{service} finishedt reading. Spend time on it: {spend_time:.2f} Sekunden")
+def finish_reading(media_service, spend_time):
+    if not tasks[media_service]["completed"]:
+        tasks[media_service]["completed"] = True
+        tasks[media_service]["total_time"] += spend_time
+        print(f"{media_service} finishedt reading. Spend time on it: {spend_time:.2f} Sekunden")
 
 
 def reset_programm():
-    for service in tasks:
-        tasks[service]["completed"] = False
+    for key in tasks:
+        tasks[key]["completed"] = False
 
 def add_newspaper():
     new_magazine = input("Type the name of the new magazine: ")
@@ -30,8 +30,6 @@ def add_newspaper():
     daily_media[new_number] = new_magazine
     tasks[new_number] = {"completed": False, "total_time": 0.0}
     print(f"New Magazine '{new_magazine}' added")
-
-
 
 
 def calculate_average_time(completed_tasks):
@@ -64,13 +62,15 @@ while True:
             total_time = tasks[info]["total_time"]
             print(f"{service}: ({info}) {status} - Total time {total_time:.2} seconds")
     elif user_input == "average":
-        average_time = calculate_average_time()
-        print(f"Average time for completed tasks: {average_time:.2} seconds")
+        completed_tasks = [task for task in tasks.values() if task["completed"]]
+        average_time = calculate_average_time(completed_tasks)
+        rounded_time = round(average_time, 2)
+        print(f"Average time for completed tasks: {rounded_time} seconds")
     elif user_input == "completed":
-        service = int(input("Type the number of the read news paper: "))
-        if service in daily_media.values() and not tasks[service]["completed"]:
+        media_service = int(input("Type the number of the read news paper: "))
+        if media_service in daily_media.keys() and not tasks[media_service]["completed"]:
             spend_time = float(input("Enter the time yu spend (in seconds): "))
-            finish_reading(daily_media[service], spend_time)
+            finish_reading(media_service, spend_time)
     elif user_input == "reset":
         reset_programm()
         print("The Programm willl be complettly reseted")
