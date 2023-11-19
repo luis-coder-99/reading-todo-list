@@ -20,11 +20,15 @@ def finish_reading(media_service, spend_time):
         print(f"Finishedt reading. Spend time on it: {spend_time:.2f} Min")
               
 def check_finish_reading():
-    media_service = int(input("Type the number of the read news paper: "))
-    if media_service in daily_media.keys() and not tasks[media_service]["completed"]:
-        spend_time = float(input("Enter the time yu spend (in minutes): "))
-        finish_reading(media_service, spend_time)
-
+    count = 0
+    while count <3:
+        media_service = int(input("Type the number of the read newspapaer: "))
+        if media_service in daily_media.keys() and not tasks[media_service]["completed"]:
+            spend_time = float(input("Enter the time you spend in (minutes): "))
+            finish_reading(media_service, spend_time)
+            count += 1
+        else:
+            print("Wrong input")
 
 def reset_programm():
     for task in tasks:
@@ -74,11 +78,6 @@ while True:
         print("Average time for completed tasks: {:.2f} minutes".format(average_time))
     elif user_input == "completed":
         check_finish_reading()
-        user_input = str(input("Type:"))
-        if user_input == "Yes":
-            check_finish_reading()
-        else:
-            break
     elif user_input == "reset":
         reset_programm()
         print("The Programm willl be complettly reseted")
