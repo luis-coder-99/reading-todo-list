@@ -43,7 +43,9 @@ def add_newspaper():
     print(f"New Magazine '{new_magazine}' added")
 
 
-def calculate_average_time(completed_tasks):
+def calculate_average_time():
+    completed_tasks = [task["total_time"] for task in tasks.values() if task["completed"]]
+
     if completed_tasks:
         total_time_completed = sum(task["total_time"] for task in completed_tasks)
         return total_time_completed / len(completed_tasks)
@@ -74,7 +76,7 @@ while True:
             print(f"{service}: ({info}) {status} - Total time {total_time:.2f} minutes")
     elif user_input == "average":
         completed_tasks = [task for task in tasks.values() if task["completed"]]
-        average_time = calculate_average_time(completed_tasks)
+        average_time = calculate_average_time()
         print("Average time for completed tasks: {:.2f} minutes".format(average_time))
     elif user_input == "completed":
         check_finish_reading()
