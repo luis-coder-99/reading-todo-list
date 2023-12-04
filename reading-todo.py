@@ -14,9 +14,9 @@ def check_finish_reading(tasks):
 ### Is resetting all programms
 
 def reset_programm(tasks):
-    for task in tasks:
-        tasks[task]["completed"] = False
-        tasks[task]["total_time"] = 0.0
+    for task_key in tasks.keys():
+        tasks[task_key]["completed"] = False
+        tasks[task_key]["total_time"] = 0.0
     return tasks
 ### Is adding new Newspapers
 
@@ -110,4 +110,4 @@ while True:
     elif user_input == "add":
         model_tasks = add_newspaper(model_tasks)
     else:
-        ("Wrong Input")
+        print("Wrong Input")
