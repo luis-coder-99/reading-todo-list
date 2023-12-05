@@ -100,8 +100,8 @@ while True:
         average_time = calculate_average_time_for_all(model_tasks)
         print("Average time for all completed tasks: {:.2f} minutes".format(average_time))
     elif user_input == "average_2":
-            average_time = calculate_average_time_for_some(daily_media, model_tasks)
-            print("Average time for specific completed tasks: {:.2f} minutes".format(average_time))
+        average_time = calculate_average_time_for_some(daily_media, model_tasks)
+        print("Average time for specific completed tasks: {:.2f} minutes".format(average_time))
     elif user_input == "completed":
         model_tasks = check_finish_reading(model_tasks)
     elif user_input == "reset":
