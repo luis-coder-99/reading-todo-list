@@ -13,4 +13,9 @@ A user can choose between these Inputs:
 - add: If he wants to add a new newspaper
 
 ## How to run
+
+1. Download the repo code
+2. Open the Python File
+3. Run the file
+   
 `python3 reading-todo.py`
